@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["fukayatsu@gmail.com"]
   spec.summary       = %q{( ⁰⊖⁰): Write a short summary. Required.}
   spec.description   = %q{( ⁰⊖⁰): Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/esaio/esa-ruby/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
