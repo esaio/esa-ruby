@@ -1,6 +1,6 @@
 # esa-ruby
 
-[WIP] esa API v2 client library, written in Ruby
+[WIP] esa API v1 client library, written in Ruby
 
 ## Installation
 
