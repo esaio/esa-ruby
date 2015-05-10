@@ -1,5 +1,5 @@
-require "esa/version"
+require "faraday"
+require "faraday_middleware"
 
-module Esa
-  # Your code goes here...
-end
+require "esa/version"
+require "esa/client"

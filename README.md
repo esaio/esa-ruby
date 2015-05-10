@@ -1,6 +1,6 @@
-# Esa
+# esa-ruby
 
-( ⁰⊖⁰): Write a gem description
+[WIP] esa API v2 client library, written in Ruby
 
 ## Installation
 
@@ -20,7 +20,27 @@ Or install it yourself as:
 
 ## Usage
 
-( ⁰⊖⁰): Write usage instructions here
+```ruby
+client = Esa::Client.new(access_token: "<access_token>", current_team: 'foo')
+client.teams
+#=> GET /v1/teams
+
+client.team('bar')
+#=> GET /v1/teams/bar
+
+client.posts
+#=> GET /v1/teams/foo/posts
+
+client.current_team = 'foobar'
+client.post(1)
+#=> GET /v1/teams/foobar/posts/1
+
+client.update_post(1, name: 'baz')
+#=> PATCH /v1/teams/foobar/posts/1
+
+client.delete_post(1)
+#=> DELETE /v1/teams/foobar/posts/1
+```
 
 ## Contributing
 
