@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["fukayatsu"]
   spec.email         = ["fukayatsu@gmail.com"]
   spec.summary       = %q{[WIP] esa API v2 client library, written in Ruby}
-  spec.description   = %q{([WIP] esa API v2 client library, written in Ruby}
+  spec.description   = %q{[WIP] esa API v2 client library, written in Ruby}
   spec.homepage      = "https://github.com/esaio/esa-ruby/"
   spec.license       = "MIT"
 
