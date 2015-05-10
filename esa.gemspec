@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Esa::VERSION
   spec.authors       = ["fukayatsu"]
   spec.email         = ["fukayatsu@gmail.com"]
-  spec.summary       = %q{( ⁰⊖⁰): Write a short summary. Required.}
-  spec.description   = %q{( ⁰⊖⁰): Write a longer description. Optional.}
+  spec.summary       = %q{[WIP] esa API v2 client library, written in Ruby}
+  spec.description   = %q{([WIP] esa API v2 client library, written in Ruby}
   spec.homepage      = "https://github.com/esaio/esa-ruby/"
   spec.license       = "MIT"
 
@@ -18,6 +18,15 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_runtime_dependency "faraday", "~> 0.9"
+  spec.add_runtime_dependency "faraday_middleware"
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "webmock"
+  spec.add_development_dependency "vcr"
+  spec.add_development_dependency "guard"
+  spec.add_development_dependency "guard-rspec"
+  spec.add_development_dependency "rspec-nc"
 end
