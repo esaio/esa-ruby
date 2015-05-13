@@ -11,7 +11,7 @@ module Esa
     end
 
     def headers
-      @headers ||= @raw_headers.headers.inject({}) do |result, (key, value)|
+      @headers ||= @raw_headers.inject({}) do |result, (key, value)|
         result.merge(key.split("-").map(&:capitalize).join("-") => value)
       end
     end
