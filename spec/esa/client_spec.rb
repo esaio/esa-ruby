@@ -13,11 +13,11 @@ RSpec.describe Esa::Client do
   end
   subject(:client) { described_class.new(options) }
 
-  describe "#current_team" do
+  describe "#current_team!" do
     context 'team not specified' do
       it 'raise error' do
         expect do
-          client.current_team
+          client.current_team!
         end.to raise_error Esa::TeamNotSpecifiedError
       end
     end
