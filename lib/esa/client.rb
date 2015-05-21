@@ -11,11 +11,11 @@ module Esa
       @api_endpoint = api_endpoint
       @current_team = current_team
     end
-    attr_writer :current_team
+    attr_accessor :current_team
 
-    def current_team
+    def current_team!
       raise TeamNotSpecifiedError, "current_team is not specified" unless @current_team
-      @current_team
+      current_team
     end
 
     def send_get(path, params = nil, headers = nil)
@@ -56,7 +56,6 @@ module Esa
       {
         url:     faraday_url,
         headers: faraday_headers,
-        # ssl:     { verify: !!faraday_url.match(/^https:\/\//) },
       }
     end
 

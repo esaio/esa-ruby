@@ -9,23 +9,23 @@ module Esa
     end
 
     def posts(params = nil, headers = nil)
-      send_get("/v1/teams/#{current_team}/posts", params, headers)
+      send_get("/v1/teams/#{current_team!}/posts", params, headers)
     end
 
     def post(number, params = nil, headers = nil)
-      send_get("/v1/teams/#{current_team}/posts/#{number}", params, headers)
+      send_get("/v1/teams/#{current_team!}/posts/#{number}", params, headers)
     end
 
     def create_post(params = nil, headers = nil)
-      send_post("/v1/teams/#{current_team}/posts", wrap(params, :post), headers)
+      send_post("/v1/teams/#{current_team!}/posts", wrap(params, :post), headers)
     end
 
     def update_post(number, params = nil, headers = nil)
-      send_patch("/v1/teams/#{current_team}/posts/#{number}", wrap(params, :post), headers)
+      send_patch("/v1/teams/#{current_team!}/posts/#{number}", wrap(params, :post), headers)
     end
 
     def delete_post(number, params = nil, headers = nil)
-      send_delete("/v1/teams/#{current_team}/posts/#{number}", params, headers)
+      send_delete("/v1/teams/#{current_team!}/posts/#{number}", params, headers)
     end
 
     private
