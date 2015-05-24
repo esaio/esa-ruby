@@ -32,7 +32,7 @@ client.posts
 #=> GET /v1/teams/foo/posts
 
 client.posts(q: 'in:help')
-#=> GET /v1/teams/docs/posts?q=in%3Ahelp
+#=> GET /v1/teams/foo/posts?q=in%3Ahelp
 
 client.current_team = 'foobar'
 client.post(1)
