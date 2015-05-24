@@ -38,7 +38,10 @@ client.current_team = 'foobar'
 client.post(1)
 #=> GET /v1/teams/foobar/posts/1
 
-client.update_post(1, name: 'baz')
+client.create_post(name: 'foo')
+#=> POST /v1/teams/foobar/posts
+
+client.update_post(1, name: 'bar')
 #=> PATCH /v1/teams/foobar/posts/1
 
 client.delete_post(1)
