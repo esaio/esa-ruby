@@ -1,3 +1,6 @@
+## 0.0.6 (2015-06-21)
+- [Support Comment API by fukayatsu · Pull Request #9 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/9)
+
 ## 0.0.5 (2015-05-21)
 - [Use current_team! instead of current_team by fukayatsu · Pull Request #8 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/8)
 
