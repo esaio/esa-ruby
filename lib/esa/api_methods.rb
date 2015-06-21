@@ -28,6 +28,26 @@ module Esa
       send_delete("/v1/teams/#{current_team!}/posts/#{post_number}", params, headers)
     end
 
+    def comments(post_number,  params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/posts/#{post_number}/comments", params, headers)
+    end
+
+    def comment(comment_id, params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/comments/#{comment_id}", params, headers)
+    end
+
+    def create_comment(post_number, params = nil, headers = nil)
+      send_post("/v1/teams/#{current_team!}/posts/#{post_number}/comments", wrap(params, :comment), headers)
+    end
+
+    def update_comment(comment_id, params = nil, headers = nil)
+      send_patch("/v1/teams/#{current_team!}/comments/#{comment_id}", wrap(params, :comment), headers)
+    end
+
+    def delete_comment(comment_id, params = nil, headers = nil)
+      send_delete("/v1/teams/#{current_team!}/comments/#{comment_id}", params, headers)
+    end
+
     private
 
     def wrap(params, envelope)
