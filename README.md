@@ -21,13 +21,17 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
+# Initialization
 client = Esa::Client.new(access_token: "<access_token>", current_team: 'foo')
+
+# Team API
 client.teams
 #=> GET /v1/teams
 
 client.team('bar')
 #=> GET /v1/teams/bar
 
+# Post API
 client.posts
 #=> GET /v1/teams/foo/posts
 
@@ -35,18 +39,41 @@ client.posts(q: 'in:help')
 #=> GET /v1/teams/foo/posts?q=in%3Ahelp
 
 client.current_team = 'foobar'
-client.post(1)
+post_number = 1
+client.post(post_number)
 #=> GET /v1/teams/foobar/posts/1
 
 client.create_post(name: 'foo')
 #=> POST /v1/teams/foobar/posts
 
-client.update_post(1, name: 'bar')
+client.update_post(post_number, name: 'bar')
 #=> PATCH /v1/teams/foobar/posts/1
 
-client.delete_post(1)
+client.delete_post(post_number)
 #=> DELETE /v1/teams/foobar/posts/1
+
+
+# Comment API
+client.comments(post_number)
+#=> GET /v1/teams/foobar/posts/1/comments
+
+client.create_comment(post_number, body_md: 'baz')
+#=> POST /v1/teams/foobar/posts/1/comments
+
+comment_id = 123
+client.comment(comment_id)
+#=> GET /v1/teams/foobar/comments/123
+
+client.update_comment(comment_id, body_md: 'bazbaz')
+#=> PATCH /v1/teams/foobar/comments/123
+
+client.delete_comment(comment_id)
+#=> DELETE /v1/teams/foobar/comments/123
+
 ```
+
+
+see also: [dev/api/v1(beta) - docs.esa.io](https://docs.esa.io/posts/102)
 
 ## Contributing
 
