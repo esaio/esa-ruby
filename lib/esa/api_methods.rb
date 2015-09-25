@@ -8,8 +8,8 @@ module Esa
       send_get("/v1/teams/#{team_name}", params, headers)
     end
 
-    def stats(team_name, params = nil, headers = nil)
-      send_get("/v1/teams/#{team_name}/stats", params, headers)
+    def stats(params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/stats", params, headers)
     end
 
     def posts(params = nil, headers = nil)
