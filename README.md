@@ -74,6 +74,12 @@ client.update_comment(comment_id, body_md: 'bazbaz')
 client.delete_comment(comment_id)
 #=> DELETE /v1/teams/foobar/comments/123
 
+
+# Upload Attachment(beta)
+client.upload_attachment('/Users/foo/Desktop/foo.png')              # Path
+client.upload_attachment(File.open('/Users/foo/Desktop/foo.png'))   # File
+client.upload_attachment('http://example.com/foo.png')              # URL
+
 ```
 
 
