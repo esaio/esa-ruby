@@ -1,3 +1,6 @@
+## 1.1.1 (2015-10-01)
+- [Enable to set cookie for remote url on #upload_attachment by fukayatsu · Pull Request #14 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/14)
+
 ## 1.1.0 (2015-10-01)
 - [Enable to Upload Attachment by fukayatsu · Pull Request #13 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/13)
 
