@@ -1,5 +1,7 @@
 module Esa
   module ApiMethods
+    HTTP_REGEX = %r{^https?://}
+
     def teams(params = nil, headers = nil)
       send_get("/v1/teams", params, headers)
     end
@@ -52,6 +54,33 @@ module Esa
       send_delete("/v1/teams/#{current_team!}/comments/#{comment_id}", params, headers)
     end
 
+    class PathStringIO < StringIO
+      attr_accessor :path
+
+      def initialize(*args)
+        super(*args[1..-1])
+        @path = args[0]
+      end
+    end
+
+    # beta
+    def upload_attachment(path_or_file_or_url, params = {}, headers = nil)
+      file = file_from(path_or_file_or_url)
+      setup_params_for_upload(params, file)
+
+      response = send_post("/v1/teams/#{current_team!}/attachments/policies", params, headers)
+      return response unless response.status == 200
+
+      attachment = response.body['attachment']
+      form_data  = response.body['form'].merge(file: Faraday::UploadIO.new(file, params[:type]))
+
+      s3_response = send_s3_request(:post, attachment['endpoint'], form_data)
+      return s3_response unless s3_response.status == 204
+
+      response.body.delete('form')
+      response
+    end
+
     private
 
     def wrap(params, envelope)
@@ -59,6 +88,35 @@ module Esa
       return params unless params.is_a?(Hash)
       return params if params.has_key?(envelope.to_sym) || params.has_key?(envelope.to_s)
       { envelope => params }
+    end
+
+    def content_type_from_file(file)
+      require 'mime/types'
+      if mime_type = MIME::Types.type_for(file.path).first
+        mime_type.content_type
+      end
+    rescue LoadError
+      msg = 'Please pass content_type or install mime-types gem to guess content type from file'
+      raise MissingContentTypeErrork, msg
+    end
+
+    def file_from(path_or_file_or_url)
+      if path_or_file_or_url.respond_to?(:read)
+        path_or_file_or_url
+      elsif path_or_file_or_url.is_a?(String) && HTTP_REGEX.match(path_or_file_or_url)
+        remote_url = path_or_file_or_url
+        response = send_simple_request(:get, remote_url)
+        PathStringIO.new(File.basename(remote_url), response.body)
+      else
+        path = path_or_file_or_url
+        File.new(path, "r+b")
+      end
+    end
+
+    def setup_params_for_upload(params, file)
+      params[:type] = params.delete(:content_type) || content_type_from_file(file)
+      params[:size] = file.size
+      params[:name] = File.basename(file.path)
     end
   end
 end

@@ -1,6 +1,6 @@
+require 'esa/errors'
 require 'esa/api_methods'
 require "esa/response"
-require 'esa/errors'
 
 module Esa
   class Client
@@ -38,15 +38,38 @@ module Esa
       send_request(:delete, path, params, headers)
     end
 
-    def send_request(method, path, params, headers)
-      Esa::Response.new(connection.send(method, path, params, headers))
+    def send_request(method, path, params = nil, headers = nil)
+      Esa::Response.new(esa_connection.send(method, path, params, headers))
     end
 
-    def connection
-      @connection ||= Faraday.new(faraday_options) do |c|
-        c.request  :json
+    def send_s3_request(method, path, params = nil, headers = nil)
+      Esa::Response.new(s3_connection.send(method, path, params, headers))
+    end
+
+    def send_simple_request(method, path, params = nil, headers = nil)
+      Esa::Response.new(simple_connection.send(method, path, params, headers))
+    end
+
+    def esa_connection
+      @esa_connection ||= Faraday.new(faraday_options) do |c|
+        c.request :json
         c.response :json
-        c.adapter  Faraday.default_adapter
+        c.adapter Faraday.default_adapter
+      end
+    end
+
+    def s3_connection
+      @s3_connection ||= Faraday.new do |c|
+        c.request :multipart
+        c.request :url_encoded
+        c.response :xml
+        c.adapter Faraday.default_adapter
+      end
+    end
+
+    def simple_connection
+      @simple_connection ||= Faraday.new do |c|
+        c.adapter Faraday.default_adapter
       end
     end
 
@@ -55,7 +78,7 @@ module Esa
     def faraday_options
       {
         url:     faraday_url,
-        headers: faraday_headers,
+        headers: faraday_headers
       }
     end
 
