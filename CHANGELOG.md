@@ -1,3 +1,6 @@
+## 1.1.0 (2015-10-01)
+- [Enable to Upload Attachment by fukayatsu · Pull Request #13 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/13)
+
 ## 1.0.0 (2015-09-25)
 - Production Ready (\\( ⁰⊖⁰)/)
 - [Add Stats API by fukayatsu · Pull Request #12 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/12)
