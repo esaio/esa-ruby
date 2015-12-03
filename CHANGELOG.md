@@ -1,3 +1,6 @@
+## 1.2.0 (2015-12-03)
+- add: [Add Members API by fukayatsu · Pull Request #16 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/16)
+
 ## 1.1.2 (2015-10-05)
 - fix: [Esa::Client#upload_attachment needs 'multi_xml' gem by ppworks · Pull Request #15 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/15)
 
