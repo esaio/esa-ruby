@@ -14,6 +14,10 @@ module Esa
       send_get("/v1/teams/#{current_team!}/stats", params, headers)
     end
 
+    def members(params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/members", params, headers)
+    end
+
     def posts(params = nil, headers = nil)
       send_get("/v1/teams/#{current_team!}/posts", params, headers)
     end
