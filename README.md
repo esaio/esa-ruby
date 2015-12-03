@@ -35,6 +35,9 @@ client.team('bar')
 client.stats
 #=> GET /v1/teams/bar/stats
 
+client.members
+#=> GET /v1/teams/bar/members
+
 # Post API
 client.posts
 #=> GET /v1/teams/foo/posts
