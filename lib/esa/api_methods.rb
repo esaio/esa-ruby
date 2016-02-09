@@ -58,6 +58,14 @@ module Esa
       send_delete("/v1/teams/#{current_team!}/comments/#{comment_id}", params, headers)
     end
 
+    def create_sharing(post_number, params = nil, headers = nil)
+      send_post("/v1/teams/#{current_team!}/posts/#{post_number}/sharing", params, headers)
+    end
+
+    def delete_sharing(post_number, params = nil, headers = nil)
+      send_delete("/v1/teams/#{current_team!}/posts/#{post_number}/sharing", params, headers)
+    end
+
     class PathStringIO < StringIO
       attr_accessor :path
 
