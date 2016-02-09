@@ -1,3 +1,6 @@
+## 1.3.0 (2016-02-09)
+- add: [Add Sharing API by fukayatsu · Pull Request #17 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/17)
+
 ## 1.2.0 (2015-12-03)
 - add: [Add Members API by fukayatsu · Pull Request #16 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/16)
 
