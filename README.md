@@ -77,6 +77,11 @@ client.update_comment(comment_id, body_md: 'bazbaz')
 client.delete_comment(comment_id)
 #=> DELETE /v1/teams/foobar/comments/123
 
+client.create_sharing(post_number)
+#=> POST /v1/teams/foobar/posts/1/sharing
+
+client.delete_sharing(post_number)
+#=> DELETE /v1/teams/foobar/posts/1/sharing
 
 # Upload Attachment(beta)
 client.upload_attachment('/Users/foo/Desktop/foo.png')               # Path
