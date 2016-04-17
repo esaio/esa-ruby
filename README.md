@@ -25,6 +25,10 @@ Or install it yourself as:
 # Initialization
 client = Esa::Client.new(access_token: "<access_token>", current_team: 'foo')
 
+# Authenticated User API
+client.user
+#=> GET /v1/user
+
 # Team API
 client.teams
 #=> GET /v1/teams
