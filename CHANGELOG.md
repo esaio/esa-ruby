@@ -1,3 +1,6 @@
+## 1.4.0 (2016-04-17)
+- add: [Add Authenticated User API by fukayatsu · Pull Request #19 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/19)
+
 ## 1.3.0 (2016-02-09)
 - add: [Add Sharing API by fukayatsu · Pull Request #17 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/17)
 
