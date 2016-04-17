@@ -2,6 +2,10 @@ module Esa
   module ApiMethods
     HTTP_REGEX = %r{^https?://}
 
+    def user(params = nil, headers = nil)
+      send_get("/v1/user", params, headers)
+    end
+
     def teams(params = nil, headers = nil)
       send_get("/v1/teams", params, headers)
     end
