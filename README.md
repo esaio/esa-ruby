@@ -87,6 +87,38 @@ client.create_sharing(post_number)
 client.delete_sharing(post_number)
 #=> DELETE /v1/teams/foobar/posts/1/sharing
 
+
+# Star API
+client.post_stargazers(post_number)
+#=> GET /v1/teams/foobar/posts/1/stargazers
+
+client.add_post_star(post_number)
+#=> POST /v1/teams/foobar/posts/1/star
+
+client.delete_post_star(post_number)
+#=> DELETE /v1/teams/foobar/posts/1/star
+
+client.comment_stargazers(comment_id)
+#=> GET /v1/teams/foobar/comments/123/stargazers
+
+client.add_comment_star(comment_id)
+#=> POST /v1/teams/foobar/comments/123/star
+
+client.delete_comment_star(comment_id)
+#=> DELETE /v1/teams/foobar/comments/123/star
+
+
+# Watch API
+client.watchers(post_number)
+#=> GET /v1/teams/foobar/posts/1/watchers
+
+client.add_watch(post_number)
+#=> POST /v1/teams/foobar/posts/1/watch
+
+client.delete_watch(post_number)
+#=> DELETE /v1/teams/foobar/posts/1/watch
+
+
 # Upload Attachment(beta)
 client.upload_attachment('/Users/foo/Desktop/foo.png')               # Path
 client.upload_attachment(File.open('/Users/foo/Desktop/foo.png'))    # File
