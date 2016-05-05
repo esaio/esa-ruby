@@ -70,6 +70,42 @@ module Esa
       send_delete("/v1/teams/#{current_team!}/posts/#{post_number}/sharing", params, headers)
     end
 
+    def post_stargazers(post_number, params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/posts/#{post_number}/stargazers", params, headers)
+    end
+
+    def add_post_star(post_number, params = nil, headers = nil)
+      send_post("/v1/teams/#{current_team!}/posts/#{post_number}/star", params, headers)
+    end
+
+    def delete_post_star(post_number, params = nil, headers = nil)
+      send_delete("/v1/teams/#{current_team!}/posts/#{post_number}/star", params, headers)
+    end
+
+    def comment_stargazers(comment_id, params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/comments/#{comment_id}/stargazers", params, headers)
+    end
+
+    def add_comment_star(comment_id, params = nil, headers = nil)
+      send_post("/v1/teams/#{current_team!}/comments/#{comment_id}/star", params, headers)
+    end
+
+    def delete_comment_star(comment_id, params = nil, headers = nil)
+      send_delete("/v1/teams/#{current_team!}/comments/#{comment_id}/star", params, headers)
+    end
+
+    def watchers(post_number, params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/posts/#{post_number}/watchers", params, headers)
+    end
+
+    def add_watch(post_number, params = nil, headers = nil)
+      send_post("/v1/teams/#{current_team!}/posts/#{post_number}/watch", params, headers)
+    end
+
+    def delete_watch(post_number, params = nil, headers = nil)
+      send_delete("/v1/teams/#{current_team!}/posts/#{post_number}/watch", params, headers)
+    end
+
     class PathStringIO < StringIO
       attr_accessor :path
 
