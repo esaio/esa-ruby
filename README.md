@@ -118,6 +118,13 @@ client.add_watch(post_number)
 client.delete_watch(post_number)
 #=> DELETE /v1/teams/foobar/posts/1/watch
 
+# Categories API
+client.categories
+#=> GET /v1/teams/foobar/categories
+
+# Tags API
+client.tags
+#=> GET /v1/teams/foobar/tags
 
 # Upload Attachment(beta)
 client.upload_attachment('/Users/foo/Desktop/foo.png')               # Path

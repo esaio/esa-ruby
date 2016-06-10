@@ -106,6 +106,14 @@ module Esa
       send_delete("/v1/teams/#{current_team!}/posts/#{post_number}/watch", params, headers)
     end
 
+    def categories(params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/categories", params, headers)
+    end
+
+    def tags(params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/tags", params, headers)
+    end
+
     class PathStringIO < StringIO
       attr_accessor :path
 
