@@ -1,7 +1,7 @@
 # esa-ruby
 [![Build Status](https://travis-ci.org/esaio/esa-ruby.svg)](https://travis-ci.org/esaio/esa-ruby)
 
-[WIP] esa API v1 client library, written in Ruby
+esa API v1 client library, written in Ruby
 
 ## Installation
 

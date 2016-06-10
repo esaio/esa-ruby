@@ -1,3 +1,6 @@
+## 1.6.0 (2016-06-10)
+- add: [Add Categories API and Tags API by fukayatsu · Pull Request #22 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/22)
+
 ## 1.5.0 (2016-05-05)
 - add: [Add Reaction APIs: star&watch by fukayatsu · Pull Request #20 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/20)
 
