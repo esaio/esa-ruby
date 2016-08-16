@@ -132,6 +132,9 @@ client.upload_attachment(File.open('/Users/foo/Desktop/foo.png'))    # File
 client.upload_attachment('http://example.com/foo.png')               # Remote URL
 client.upload_attachment(['http://example.com/foo.png', cookie_str]) # Remote URL + Cookie
 
+# Signed url for secure upload(beta)
+client.signed_url('uploads/p/attachments/1/2016/08/16/1/foobar.png')
+#=> GET /v1/teams/kama/signed_url/uploads/p/attachments/1/2016/08/16/1/foobar.png
 ```
 
 
