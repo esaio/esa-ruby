@@ -1,3 +1,7 @@
+## 1.7.0 (2016-08-16)
+- add: [Support signed_url API by fukayatsu · Pull Request #24 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/24)
+- fix: [Fix a typo by ksss · Pull Request #23 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/23)
+
 ## 1.6.0 (2016-06-10)
 - add: [Add Categories API and Tags API by fukayatsu · Pull Request #22 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/22)
 
