@@ -134,7 +134,7 @@ client.upload_attachment(['http://example.com/foo.png', cookie_str]) # Remote UR
 
 # Signed url for secure upload(beta)
 client.signed_url('uploads/p/attachments/1/2016/08/16/1/foobar.png')
-#=> GET /v1/teams/kama/signed_url/uploads/p/attachments/1/2016/08/16/1/foobar.png
+#=> GET /v1/teams/foobar/signed_url/uploads/p/attachments/1/2016/08/16/1/foobar.png
 ```
 
 
