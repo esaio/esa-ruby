@@ -161,7 +161,7 @@ module Esa
       end
     rescue LoadError
       msg = 'Please pass content_type or install mime-types gem to guess content type from file'
-      raise MissingContentTypeErrork, msg
+      raise MissingContentTypeError, msg
     end
 
     def file_from(path_or_file_or_url)
