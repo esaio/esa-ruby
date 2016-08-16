@@ -141,6 +141,10 @@ module Esa
       response
     end
 
+    def signed_url(file_path, params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/signed_url/#{file_path}", params, headers)
+    end
+
     private
 
     def wrap(params, envelope)
