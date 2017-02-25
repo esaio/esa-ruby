@@ -122,6 +122,9 @@ client.delete_watch(post_number)
 client.categories
 #=> GET /v1/teams/foobar/categories
 
+client.batch_move_category(from: '/esa/', to: '/tori/piyo/')
+#=> POST /v1/teams/foobar/categories/batch_move
+
 # Tags API
 client.tags
 #=> GET /v1/teams/foobar/tags

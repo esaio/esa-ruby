@@ -110,6 +110,10 @@ module Esa
       send_get("/v1/teams/#{current_team!}/categories", params, headers)
     end
 
+    def batch_move_category(params = nil, headers = nil)
+      send_post("/v1/teams/#{current_team!}/categories/batch_move", params, headers)
+    end
+
     def tags(params = nil, headers = nil)
       send_get("/v1/teams/#{current_team!}/tags", params, headers)
     end
