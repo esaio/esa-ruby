@@ -141,7 +141,7 @@ client.signed_url('uploads/p/attachments/1/2016/08/16/1/foobar.png')
 ```
 
 
-see also: [dev/api/v1(beta) - docs.esa.io](https://docs.esa.io/posts/102)
+see also: [dev/api/v1 - docs.esa.io](https://docs.esa.io/posts/102)
 
 ## Contributing
 
