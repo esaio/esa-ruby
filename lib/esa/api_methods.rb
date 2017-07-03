@@ -169,14 +169,18 @@ module Esa
     end
 
     def file_from(path_or_file_or_url)
-      path_or_file_or_url, cookie = *path_or_file_or_url if path_or_file_or_url.is_a?(Array)
+      path_or_file_or_url, headers_or_cookie = *path_or_file_or_url if path_or_file_or_url.is_a?(Array)
 
       if path_or_file_or_url.respond_to?(:read)
         path_or_file_or_url
       elsif path_or_file_or_url.is_a?(String) && HTTP_REGEX.match(path_or_file_or_url)
         remote_url = path_or_file_or_url
-        headers = {}
-        headers[:Cookie] = cookie if cookie
+        headers =
+          if headers_or_cookie
+            headers_or_cookie.is_a?(Hash) ? headers_or_cookie : { Cookie: headers_or_cookie }
+          else
+            {}
+          end
         response = send_simple_request(:get, remote_url, nil, headers)
         raise RemoteURLNotAvailableError, "#{remote_url} is not available." unless response.status == 200
         PathStringIO.new(File.basename(remote_url), response.body)
