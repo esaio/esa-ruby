@@ -130,10 +130,11 @@ client.tags
 #=> GET /v1/teams/foobar/tags
 
 # Upload Attachment(beta)
-client.upload_attachment('/Users/foo/Desktop/foo.png')               # Path
-client.upload_attachment(File.open('/Users/foo/Desktop/foo.png'))    # File
-client.upload_attachment('http://example.com/foo.png')               # Remote URL
-client.upload_attachment(['http://example.com/foo.png', cookie_str]) # Remote URL + Cookie
+client.upload_attachment('/Users/foo/Desktop/foo.png')                 # Path
+client.upload_attachment(File.open('/Users/foo/Desktop/foo.png'))      # File
+client.upload_attachment('http://example.com/foo.png')                 # Remote URL
+client.upload_attachment(['http://example.com/foo.png', cookie_str])   # Remote URL + Cookie
+client.upload_attachment(['http://example.com/foo.png', headers_hash]) # Remote URL + Headers
 
 # Signed url for secure upload(beta)
 client.signed_url('uploads/p/attachments/1/2016/08/16/1/foobar.png')
