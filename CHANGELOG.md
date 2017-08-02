@@ -1,3 +1,9 @@
+## 1.9.0 (2017-08-02)
+- add: [Enable to set headers for remote url on #upload_attachment by nownabe · Pull Request #26 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/26)
+
+## 1.8.0 (2017-02-25)
+- add: [Add batch_move_category API by fukayatsu · Pull Request #25 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/25)
+
 ## 1.7.0 (2016-08-16)
 - add: [Support signed_url API by fukayatsu · Pull Request #24 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/24)
 - fix: [Fix a typo by ksss · Pull Request #23 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/23)
