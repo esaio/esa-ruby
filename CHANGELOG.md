@@ -1,3 +1,6 @@
+## 1.10.0 (2017-08-22)
+- add: [Support invitation API by ppworks · Pull Request #27 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/27)
+
 ## 1.9.0 (2017-08-02)
 - add: [Enable to set headers for remote url on #upload_attachment by nownabe · Pull Request #26 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/26)
 
