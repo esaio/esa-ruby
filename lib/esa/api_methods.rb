@@ -118,6 +118,27 @@ module Esa
       send_get("/v1/teams/#{current_team!}/tags", params, headers)
     end
 
+    def invitation(params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/invitation", params, headers)
+    end
+
+    def regenerate_invitation(params = nil, headers = nil)
+      send_post("/v1/teams/#{current_team!}/invitation_regenerator", params, headers)
+    end
+
+    def pending_invitations(params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/invitations", params, headers)
+    end
+
+    def send_invitation(emails, params = {}, headers = nil)
+      params = params.merge(member: { emails: emails } )
+      send_post("/v1/teams/#{current_team!}/invitations", params, headers)
+    end
+
+    def cancel_invitation(code, params = nil, headers = nil)
+      send_delete("/v1/teams/#{current_team!}/invitations/#{code}", params, headers)
+    end
+
     class PathStringIO < StringIO
       attr_accessor :path
 

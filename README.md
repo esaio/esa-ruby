@@ -129,6 +129,22 @@ client.batch_move_category(from: '/esa/', to: '/tori/piyo/')
 client.tags
 #=> GET /v1/teams/foobar/tags
 
+# Infitation API
+client.invitation
+#=> GET /v1/teams/foobar/invitation
+
+client.regenerate_invitation
+#=> POST /v1/teams/foobar/invitation_regenerator
+
+client.pending_invitations
+#=> GET /v1/teams/foobar/invitations
+
+client.send_invitation(emails)
+#=> POST /v1/teams/foobar/invitations
+
+client.cancel_invitation(invitation_code)
+#=> DELETE /v1/teams/foobar/invitations/baz
+
 # Upload Attachment(beta)
 client.upload_attachment('/Users/foo/Desktop/foo.png')                 # Path
 client.upload_attachment(File.open('/Users/foo/Desktop/foo.png'))      # File
