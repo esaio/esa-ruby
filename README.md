@@ -145,6 +145,19 @@ client.send_invitation(emails)
 client.cancel_invitation(invitation_code)
 #=> DELETE /v1/teams/foobar/invitations/baz
 
+# Emoji API
+client.emojis
+#=> GET /v1/teams/foobar/emojis
+
+client.create_emoji(code: 'team_emoji', image: '/path/to/image')
+#=> POST /v1/teams/foobar/emojis
+
+client.create_emoji(code: 'alias_code', origin_code: 'team_emoji')
+#=> POST /v1/teams/foobar/emojis
+
+client.delete_emoji('team_emoji')
+#=> DELETE /v1/teams/foobar/emojis/team_emoji
+
 # Upload Attachment(beta)
 client.upload_attachment('/Users/foo/Desktop/foo.png')                 # Path
 client.upload_attachment(File.open('/Users/foo/Desktop/foo.png'))      # File
