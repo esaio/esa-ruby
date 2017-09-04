@@ -1,3 +1,6 @@
+## 1.11.0 (2017-09-04)
+- add: [Support emoji API by ppworks · Pull Request #28 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/28)
+
 ## 1.10.0 (2017-08-22)
 - add: [Support invitation API by ppworks · Pull Request #27 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/27)
 
