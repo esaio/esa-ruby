@@ -1,3 +1,4 @@
+require 'base64'
 module Esa
   module ApiMethods
     HTTP_REGEX = %r{^https?://}
@@ -137,6 +138,19 @@ module Esa
 
     def cancel_invitation(code, params = nil, headers = nil)
       send_delete("/v1/teams/#{current_team!}/invitations/#{code}", params, headers)
+    end
+
+    def emojis(params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team}/emojis", params, headers)
+    end
+
+    def create_emoji(params = nil, headers = nil)
+      params[:image] = Base64.strict_encode64(File.read(params[:image])) if params[:image]
+      send_post("/v1/teams/#{current_team!}/emojis", wrap(params, :emoji), headers)
+    end
+
+    def delete_emoji(emoji_code, params = nil, headers = nil)
+      send_delete("/v1/teams/#{current_team!}/emojis/#{emoji_code}", params, headers)
     end
 
     class PathStringIO < StringIO
