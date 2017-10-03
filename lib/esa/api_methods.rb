@@ -43,8 +43,12 @@ module Esa
       send_delete("/v1/teams/#{current_team!}/posts/#{post_number}", params, headers)
     end
 
-    def comments(post_number,  params = nil, headers = nil)
-      send_get("/v1/teams/#{current_team!}/posts/#{post_number}/comments", params, headers)
+    def comments(post_number = nil, params = nil, headers = nil)
+      if post_number.nil?
+        send_get("/v1/teams/#{current_team!}/comments", params, headers)
+      else
+        send_get("/v1/teams/#{current_team!}/posts/#{post_number}/comments", params, headers)
+      end
     end
 
     def comment(comment_id, params = nil, headers = nil)
