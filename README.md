@@ -81,6 +81,9 @@ client.update_comment(comment_id, body_md: 'bazbaz')
 client.delete_comment(comment_id)
 #=> DELETE /v1/teams/foobar/comments/123
 
+client.comments
+#=> GET /v1/teams/foobar/comments
+
 client.create_sharing(post_number)
 #=> POST /v1/teams/foobar/posts/1/sharing
 
