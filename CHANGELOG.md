@@ -1,3 +1,6 @@
+## 1.12.0 (2017-10-03)
+- add: [Support /api/v1/comments API by ppworks · Pull Request #29 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/29)
+
 ## 1.11.0 (2017-09-04)
 - add: [Support emoji API by ppworks · Pull Request #28 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/28)
 
