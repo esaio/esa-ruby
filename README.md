@@ -132,7 +132,7 @@ client.batch_move_category(from: '/esa/', to: '/tori/piyo/')
 client.tags
 #=> GET /v1/teams/foobar/tags
 
-# Infitation API
+# Invitation API
 client.invitation
 #=> GET /v1/teams/foobar/invitation
 
