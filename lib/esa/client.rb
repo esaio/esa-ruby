@@ -4,14 +4,18 @@ require "esa/response"
 
 module Esa
   class Client
+    class TooManyRequestError < StandardError; end
+
     include ApiMethods
 
-    def initialize(access_token: nil, api_endpoint: nil, current_team: nil)
+    def initialize(access_token: nil, api_endpoint: nil, current_team: nil, retry_on_rate_limit_exceeded: true)
       @access_token = access_token
       @api_endpoint = api_endpoint
       @current_team = current_team
+
+      @retry_on_rate_limit_exceeded = retry_on_rate_limit_exceeded
     end
-    attr_accessor :current_team
+    attr_accessor :current_team, :retry_on_rate_limit_exceeded
 
     def current_team!
       raise TeamNotSpecifiedError, "current_team is not specified" unless @current_team
@@ -39,7 +43,14 @@ module Esa
     end
 
     def send_request(method, path, params = nil, headers = nil)
-      Esa::Response.new(esa_connection.send(method, path, params, headers))
+      response = esa_connection.send(method, path, params, headers)
+      raise TooManyRequestError if retry_on_rate_limit_exceeded && response.status == 429 # too_many_requests
+      Esa::Response.new(response)
+    rescue TooManyRequestError
+      wait_sec = response.headers['retry-after'].to_i
+      puts "Rate limit exceeded: will retry after #{wait_sec} seconds."
+      wait_for(wait_sec)
+      retry
     end
 
     def send_s3_request(method, path, params = nil, headers = nil)
@@ -100,6 +111,16 @@ module Esa
 
     def faraday_url
       @api_endpoint || ENV["ESA_API_ENDPOINT"] || "https://api.esa.io"
+    end
+
+    def wait_for(wait_sec)
+      return if wait_sec <= 0
+
+      (wait_sec / 10).times do
+        print '.'
+        sleep 10
+      end
+      puts
     end
   end
 end
