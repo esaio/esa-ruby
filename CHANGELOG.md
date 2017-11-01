@@ -1,7 +1,7 @@
 ## 1.13.0 (2017-11-01)
-- **changed**: [Retry on rate limit exceeded by default](https://github.com/esaio/esa-ruby/pull/31)
+- **changed**: [Retry on rate limit exceeded by default by fukayatsu · Pull Request #31 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/31)
   - Use `Esa::Client.new(retry_on_rate_limit_exceeded: false, ...)` for previous behavior.
-- doc: [Fixed README typo](https://github.com/esaio/esa-ruby/pull/30)
+- doc: [Fixed README typo by polidog · Pull Request #30 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/30)
 
 ## 1.12.0 (2017-10-03)
 - add: [Support /api/v1/comments API by ppworks · Pull Request #29 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/29)
