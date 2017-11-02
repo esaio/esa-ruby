@@ -47,7 +47,7 @@ module Esa
       raise TooManyRequestError if retry_on_rate_limit_exceeded && response.status == 429 # too_many_requests
       Esa::Response.new(response)
     rescue TooManyRequestError
-      wait_sec = response.headers['retry-after'].to_i
+      wait_sec = response.headers['retry-after'].to_i + 5
       puts "Rate limit exceeded: will retry after #{wait_sec} seconds."
       wait_for(wait_sec)
       retry
@@ -120,6 +120,7 @@ module Esa
         print '.'
         sleep 10
       end
+      sleep wait_sec % 10
       puts
     end
   end
