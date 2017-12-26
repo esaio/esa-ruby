@@ -1,3 +1,4 @@
 --color
 --require spec_helper
---format=progress --format=Nc
+--format=progress
+<%= "--format=Nc" unless ENV["CI"] %>
