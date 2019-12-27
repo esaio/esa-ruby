@@ -43,6 +43,9 @@ client.stats
 client.members
 #=> GET /v1/teams/bar/members
 
+client.delete_member(screen_name)
+#=> DELETE /v1/teams/bar/members/foo
+
 # Post API
 client.posts
 #=> GET /v1/teams/foo/posts
