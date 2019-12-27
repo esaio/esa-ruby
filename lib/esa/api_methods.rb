@@ -23,6 +23,10 @@ module Esa
       send_get("/v1/teams/#{current_team!}/members", params, headers)
     end
 
+    def delete_member(screen_name, params = nil, headers = nil)
+      send_delete("/v1/teams/#{current_team!}/members/#{screen_name}", params, headers)
+    end
+
     def posts(params = nil, headers = nil)
       send_get("/v1/teams/#{current_team!}/posts", params, headers)
     end
