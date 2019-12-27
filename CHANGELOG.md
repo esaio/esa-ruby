@@ -1,3 +1,8 @@
+## 1.15.0 (2019-12-27)
+- add: [Add ApiMethods#delete_member by fukayatsu · Pull Request #40 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/40)
+- ci: [Use github actions for CI by fukayatsu · Pull Request #38 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/38)
+- ci: [Update development environment by fukayatsu · Pull Request #37 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/37)
+
 ## 1.14.0 (2018-12-13)
 - changed: [Relax gem dependencies by ppworks · Pull Request #35 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/35)
 
