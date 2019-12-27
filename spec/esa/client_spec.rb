@@ -11,7 +11,7 @@ RSpec.describe Esa::Client do
       current_team: current_team,
     }
   end
-  subject(:client) { described_class.new(options) }
+  subject(:client) { described_class.new(**options) }
 
   describe "#current_team!" do
     context 'team not specified' do
