@@ -9,10 +9,12 @@ jobs:
     strategy:
       matrix:
         ruby:
+        # https://hub.docker.com/_/ruby
         - '2.4'
         - '2.5'
         - '2.6'
-        - 'rc'
+        - '2.7'
+        - 'latest'
     container:
       image: ruby:${{ matrix.ruby }}
 
