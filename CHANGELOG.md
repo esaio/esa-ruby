@@ -1,3 +1,6 @@
+## Unreleased
+- ci: [Add specs for default_headers](https://github.com/esaio/esa-ruby/pull/45)
+
 ## 1.16.0 (2020-01-20)
 - add: [Enable to set default_headers by fukayatsu · Pull Request #43 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/43)
 
