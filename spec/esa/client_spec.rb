@@ -4,11 +4,13 @@ RSpec.describe Esa::Client do
   let(:access_token) { nil }
   let(:api_endpoint) { nil }
   let(:current_team) { nil }
+  let(:default_headers) { {} }
   let(:options) do
     {
       access_token: access_token,
       api_endpoint: api_endpoint,
       current_team: current_team,
+      default_headers: default_headers
     }
   end
   subject(:client) { described_class.new(**options) }
@@ -42,9 +44,61 @@ RSpec.describe Esa::Client do
     end
   end
 
-  # describe "#send_request", :vcr do
-  #   it 'returns Esa::Response' do
-  #     expect(client.teams).to be_a Esa::Response
-  #   end
-  # end
+  describe 'default_headers' do
+    before do
+      stub_request(:any, 'https://api.esa.io/v1/teams')
+        .to_return do |request|
+          {
+            body: request.body,
+            headers: request.headers
+          }
+        end
+    end
+
+    context 'no default_headers option' do
+      it 'request with basic headers' do
+        response = client.teams
+        expect(response.headers).to eq(
+          'Accept' => 'application/json',
+          'User-Agent' => "Esa Ruby Gem #{Esa::VERSION}",
+          'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3'
+        )
+      end
+
+      it 'request with basic headers and additional headers ' do
+        response = client.teams(nil, { 'X-Foo' => 'bar' })
+        expect(response.headers).to eq(
+          'Accept' => 'application/json',
+          'User-Agent' => "Esa Ruby Gem #{Esa::VERSION}",
+          'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'X-Foo' => 'bar'
+        )
+      end
+    end
+
+    context 'with default_headers option' do
+      let(:default_headers) { { 'X-Default-Foo' => 'Bar' } }
+
+      it 'request with basic headers and default_headers' do
+        response = client.teams
+        expect(response.headers).to eq(
+          'Accept' => 'application/json',
+          'User-Agent' => "Esa Ruby Gem #{Esa::VERSION}",
+          'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'X-Default-Foo' => 'Bar'
+        )
+      end
+
+      it 'request with basic headers and additional headers ' do
+        response = client.teams(nil, { 'X-Foo' => 'baz', 'X-Default-Foo' => 'qux' })
+        expect(response.headers).to eq(
+          'Accept' => 'application/json',
+          'User-Agent' => "Esa Ruby Gem #{Esa::VERSION}",
+          'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'X-Default-Foo' => 'qux',
+          'X-Foo' => 'baz'
+        )
+      end
+    end
+  end
 end
