@@ -8,14 +8,14 @@ module Esa
 
     include ApiMethods
 
-    def initialize(access_token: nil, api_endpoint: nil, current_team: nil, retry_on_rate_limit_exceeded: true)
+    def initialize(access_token: nil, api_endpoint: nil, current_team: nil, default_headers: {}, retry_on_rate_limit_exceeded: true)
       @access_token = access_token
       @api_endpoint = api_endpoint
       @current_team = current_team
-
+      @default_headers = default_headers
       @retry_on_rate_limit_exceeded = retry_on_rate_limit_exceeded
     end
-    attr_accessor :current_team, :retry_on_rate_limit_exceeded
+    attr_accessor :current_team, :default_headers, :retry_on_rate_limit_exceeded
 
     def current_team!
       raise TeamNotSpecifiedError, "current_team is not specified" unless @current_team
@@ -87,30 +87,28 @@ module Esa
     private
 
     def faraday_options
-      {
-        url:     faraday_url,
-        headers: faraday_headers
-      }
+      { url: api_url, headers: api_headers }
     end
 
-    def default_headers
-      {
-        'Accept'       => 'application/json',
-        'User-Agent'   => "Esa Ruby Gem #{Esa::VERSION}",
-      }
-    end
+    def api_headers
+      headers = {
+        'Accept' => 'application/json',
+        'User-Agent' => "Esa Ruby Gem #{Esa::VERSION}"
+      }.merge(default_headers)
 
-    def faraday_headers
-      return default_headers unless access_token
-      default_headers.merge(Authorization: "Bearer #{access_token}")
+      if access_token
+        headers.merge(Authorization: "Bearer #{access_token}")
+      else
+        headers
+      end
     end
 
     def access_token
       @access_token || ENV['ESA_ACCESS_TOKEN']
     end
 
-    def faraday_url
-      @api_endpoint || ENV["ESA_API_ENDPOINT"] || "https://api.esa.io"
+    def api_url
+      @api_endpoint || ENV['ESA_API_ENDPOINT'] || 'https://api.esa.io'
     end
 
     def wait_for(wait_sec)
