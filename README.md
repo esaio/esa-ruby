@@ -65,6 +65,10 @@ client.create_post(name: 'foo')
 client.update_post(post_number, name: 'bar')
 #=> PATCH /v1/teams/foobar/posts/1
 
+# (beta)
+client.append_post(post_number, content: 'bar')
+#=> POST /v1/teams/foobar/posts/1/append
+
 client.delete_post(post_number)
 #=> DELETE /v1/teams/foobar/posts/1
 

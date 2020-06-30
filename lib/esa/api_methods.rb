@@ -43,6 +43,10 @@ module Esa
       send_patch("/v1/teams/#{current_team!}/posts/#{post_number}", wrap(params, :post), headers)
     end
 
+    def append_post(post_number, params = nil, headers = nil)
+      send_post("/v1/teams/#{current_team!}/posts/#{post_number}/append", wrap(params, :post), headers)
+    end
+
     def delete_post(post_number, params = nil, headers = nil)
       send_delete("/v1/teams/#{current_team!}/posts/#{post_number}", params, headers)
     end
