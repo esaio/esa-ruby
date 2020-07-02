@@ -6,7 +6,7 @@ nothing
 
 - ci: [Add specs for default_headers](https://github.com/esaio/esa-ruby/pull/45)
 - add: [Add Post Append API (beta) by fukayatsu · Pull Request #46 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/46)
-- change: Drop support for Ruby 2.4
+- **changed**: Drop support for Ruby 2.4
 
 ## 1.16.0 (2020-01-20)
 - add: [Enable to set default_headers by fukayatsu · Pull Request #43 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/43)
