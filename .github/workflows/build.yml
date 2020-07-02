@@ -10,7 +10,6 @@ jobs:
       matrix:
         ruby:
         # https://hub.docker.com/_/ruby
-        - '2.4'
         - '2.5'
         - '2.6'
         - '2.7'
