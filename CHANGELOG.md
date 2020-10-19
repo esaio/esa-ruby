@@ -2,6 +2,10 @@
 
 nothing
 
+## 1.18.0 (2020-10-19)
+
+- add: [Relax dependencies by fukayatsu · Pull Request #47 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/47)
+
 ## 1.17.0 (2020-07-02)
 
 - ci: [Add specs for default_headers](https://github.com/esaio/esa-ruby/pull/45)
