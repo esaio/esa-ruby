@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'faraday', '>= 0.9', '< 2.0'
-  spec.add_runtime_dependency 'faraday_middleware', '~> 0.12', '< 2.0'
+  spec.add_runtime_dependency 'faraday_middleware', '>= 0.12', '< 2.0'
   spec.add_runtime_dependency 'mime-types', '>= 2.6', '< 4.0'
   spec.add_runtime_dependency 'multi_xml', '>= 0.5.5', '< 1.0'
 
