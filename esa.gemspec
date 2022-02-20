@@ -20,8 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'faraday', '>= 0.9', '< 2.0'
   spec.add_runtime_dependency 'faraday_middleware', '>= 0.12', '< 2.0'
-  spec.add_runtime_dependency 'mime-types', '>= 2.6', '< 4.0'
-  spec.add_runtime_dependency 'multi_xml', '>= 0.5.5', '< 1.0'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'pry', '~> 0.12'
