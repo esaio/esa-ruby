@@ -1,4 +1,6 @@
 require 'base64'
+require 'mime/types'
+
 module Esa
   module ApiMethods
     HTTP_REGEX = %r{^https?://}
@@ -206,7 +208,6 @@ module Esa
     end
 
     def content_type_from_file(file)
-      require 'mime/types'
       if mime_type = MIME::Types.type_for(file.path).first
         mime_type.content_type
       end

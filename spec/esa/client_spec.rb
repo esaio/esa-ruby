@@ -101,4 +101,42 @@ RSpec.describe Esa::Client do
       end
     end
   end
+
+  describe '#upload_attachment' do
+    let(:current_team) { 'test-team' }
+    let(:file) { File.open('spec/fixtures/files/egg.png') }
+
+    before do
+      stub_request(:post, "https://api.esa.io/v1/teams/test-team/attachments/policies")
+        .with(
+          body: "{\"type\":\"image/png\",\"size\":49816,\"name\":\"egg.png\"}",
+          headers: {
+            'Accept'=>'application/json',
+          }
+        )
+        .to_return(
+          status: 200,
+          body: {
+            attachment: {
+              endpoint: 'https://test.s3-ap-northeast-1.amazonaws.com',
+              url: 'https://example.com/test.png'
+            },
+            form: {
+              foo: 'bar'
+            }
+          }.to_json,
+          headers: {}
+        )
+
+        stub_request(:post, "https://test.s3-ap-northeast-1.amazonaws.com/")
+          .to_return(status: 204, body: "", headers: {
+            'Content-Type' => 'application/xml'
+          })
+    end
+
+    it 'return URL for uploaded attachment'do
+      response = client.upload_attachment(file)
+      expect(response.body['attachment']['url']).to eq('https://example.com/test.png')
+    end
+  end
 end
