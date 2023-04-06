@@ -1,5 +1,6 @@
 require "faraday"
-require "faraday_middleware"
+require "faraday/multipart"
+require "faraday/xml"
 
 require "esa/version"
 require "esa/client"

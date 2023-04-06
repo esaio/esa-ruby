@@ -17,8 +17,9 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'faraday', '>= 0.9', '< 2.0'
-  spec.add_runtime_dependency 'faraday_middleware', '>= 0.12', '< 2.0'
+  spec.add_runtime_dependency 'faraday', '>= 2.0.1', '< 3.0'
+  spec.add_runtime_dependency 'faraday-multipart'
+  spec.add_runtime_dependency 'faraday-xml'
   spec.add_runtime_dependency 'mime-types', '>= 2.6', '< 4.0'
   spec.add_runtime_dependency 'multi_xml', '>= 0.5.5', '< 1.0'
 

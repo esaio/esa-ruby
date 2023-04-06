@@ -185,7 +185,7 @@ module Esa
       return response unless response.status == 200
 
       attachment = response.body['attachment']
-      form_data  = response.body['form'].merge(file: Faraday::UploadIO.new(file, params[:type]))
+      form_data  = response.body['form'].merge(file: Faraday::FilePart.new(file, params[:type]))
 
       s3_response = send_s3_request(:post, attachment['endpoint'], form_data)
       return s3_response unless s3_response.status == 204
