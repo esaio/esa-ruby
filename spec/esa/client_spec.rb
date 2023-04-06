@@ -125,7 +125,9 @@ RSpec.describe Esa::Client do
               foo: 'bar'
             }
           }.to_json,
-          headers: {}
+          headers: {
+            'Content-Type' => 'application/json; charset=utf-8'
+          }
         )
 
         stub_request(:post, "https://test.s3-ap-northeast-1.amazonaws.com/")
