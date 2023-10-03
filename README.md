@@ -43,6 +43,17 @@ client.stats
 client.members
 #=> GET /v1/teams/bar/members
 
+client.member('me')
+#=> GET /v1/teams/bar/members/me
+
+find_by_screen_name = 'alice'
+client.member(find_by_screen_name)
+#=> GET /v1/teams/bar/members/alice
+
+find_by_email_address = 'alice@example.com'
+client.member(find_by_email_address)
+#=> GET /v1/teams/bar/members/alice@example.com
+
 delete_by_screen_name = 'alice'
 client.delete_member(delete_by_screen_name)
 #=> DELETE /v1/teams/bar/members/alice
