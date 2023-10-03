@@ -1,6 +1,12 @@
 ## Unreleased
 
 nothing
+## 2.1.0 (2023-10-03)
+
+- add: [Support GET /v1/%{team_name}/members/%{identifier} API by ppworks · Pull Request #63 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/63)
+- doc: [Update "DELETE /v1/teams/bar/members/" section in the README](https://github.com/esaio/esa-ruby/pull/62)
+- ci: [Bump actions/checkout from 3 to 4](https://github.com/esaio/esa-ruby/pull/61)
+- ci: [Add github-actions to Dependabot](https://github.com/esaio/esa-ruby/pull/60)
 
 ## 2.0.0 (2023-04-06)
 
