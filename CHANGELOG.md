@@ -1,6 +1,12 @@
 ## Unreleased
 
 nothing
+
+## 2.2.0 (2024-05-30)
+- fix: [Request to add base64 gem dependency to esa gem](https://github.com/esaio/esa-ruby/pull/64)
+- ci: [Tweak CI ruby versions](https://github.com/esaio/esa-ruby/pull/65)
+
+
 ## 2.1.0 (2023-10-03)
 
 - add: [Support GET /v1/%{team_name}/members/%{identifier} API by ppworks · Pull Request #63 · esaio/esa-ruby](https://github.com/esaio/esa-ruby/pull/63)
