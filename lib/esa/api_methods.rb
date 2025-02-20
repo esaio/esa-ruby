@@ -202,6 +202,11 @@ module Esa
       send_get("/v1/teams/#{current_team!}/signed_url/#{file_path}", params, headers)
     end
 
+    def signed_urls(file_urls, params = {}, headers = nil)
+      params = params.merge(urls: file_urls)
+      send_post("/v1/teams/#{current_team!}/signed_urls", params, headers)
+    end
+
     private
 
     def wrap(params, envelope)

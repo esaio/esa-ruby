@@ -192,9 +192,15 @@ client.upload_attachment('http://example.com/foo.png')                 # Remote 
 client.upload_attachment(['http://example.com/foo.png', cookie_str])   # Remote URL + Cookie
 client.upload_attachment(['http://example.com/foo.png', headers_hash]) # Remote URL + Headers
 
-# Signed url for secure upload(beta)
+# Signed url for secure upload(beta): deprecated
 client.signed_url('uploads/p/attachments/1/2016/08/16/1/foobar.png')
 #=> GET /v1/teams/foobar/signed_url/uploads/p/attachments/1/2016/08/16/1/foobar.png
+
+# Signed urls for secure upload(beta): upto 1,000 urls at once
+client.signed_urls(['https://files.esa.io/.../1', 'https://files.esa.io/.../2']) # expires_in defaults to 60 seconds and can be set from 1 to 604800
+client.signed_urls(['https://files.esa.io/.../1', 'https://files.esa.io/.../2'], expires_in: 3600) # expires_in: 1 hour
+#=> POST /v1/teams/foobar/signed_urls
+#=> { signed_urls: [['https://files.esa.io/.../1', 'https://singed_url1'], ['https://files.esa.io/.../2', 'https://singed_url2']] }
 ```
 
 
