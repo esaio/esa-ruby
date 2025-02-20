@@ -2,6 +2,9 @@
 
 nothing
 
+## 3.1.0 (2025-02-21)
+- add: [Add signed_urls method](https://github.com/esaio/esa-ruby/pull/70)
+
 ## 3.0.0 (2025-02-20)
 - :warning: breaking: [Drop Support for Ruby < 3.1](https://github.com/esaio/esa-ruby/pull/67)
 - ci: [Tweak CI ruby versions](https://github.com/esaio/esa-ruby/pull/65)
