@@ -2,6 +2,11 @@
 
 nothing
 
+## 3.0.0 (2025-02-20)
+- :warning: breaking: [Drop Support for Ruby < 3.1](https://github.com/esaio/esa-ruby/pull/67)
+- ci: [Tweak CI ruby versions](https://github.com/esaio/esa-ruby/pull/65)
+
+
 ## 2.2.0 (2024-05-30)
 - fix: [Request to add base64 gem dependency to esa gem](https://github.com/esaio/esa-ruby/pull/64)
 - ci: [Tweak CI ruby versions](https://github.com/esaio/esa-ruby/pull/65)
