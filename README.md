@@ -26,6 +26,9 @@ Or install it yourself as:
 # Initialization
 client = Esa::Client.new(access_token: "<access_token>", current_team: 'foo')
 
+# Initialization with faraday_middlewares
+# client = Esa::Client.new(access_token: "<access_token>", current_team: 'foo', faraday_middlewares: [Faraday::Response::Logger])
+
 # Authenticated User API
 client.user
 #=> GET /v1/user

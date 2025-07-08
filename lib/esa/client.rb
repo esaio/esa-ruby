@@ -8,14 +8,15 @@ module Esa
 
     include ApiMethods
 
-    def initialize(access_token: nil, api_endpoint: nil, current_team: nil, default_headers: {}, retry_on_rate_limit_exceeded: true)
+    def initialize(access_token: nil, api_endpoint: nil, current_team: nil, default_headers: {}, retry_on_rate_limit_exceeded: true, faraday_middlewares: [])
       @access_token = access_token
       @api_endpoint = api_endpoint
       @current_team = current_team
       @default_headers = default_headers
       @retry_on_rate_limit_exceeded = retry_on_rate_limit_exceeded
+      @faraday_middlewares = faraday_middlewares
     end
-    attr_accessor :current_team, :default_headers, :retry_on_rate_limit_exceeded
+    attr_accessor :current_team, :default_headers, :retry_on_rate_limit_exceeded, :faraday_middlewares
 
     def current_team!
       raise TeamNotSpecifiedError, "current_team is not specified" unless @current_team
@@ -63,6 +64,7 @@ module Esa
 
     def esa_connection
       @esa_connection ||= Faraday.new(faraday_options) do |c|
+        faraday_middlewares.each { |faraday_middleware| c.use faraday_middleware }
         c.request :json
         c.response :json
         c.adapter Faraday.default_adapter
@@ -71,6 +73,7 @@ module Esa
 
     def s3_connection
       @s3_connection ||= Faraday.new do |c|
+        faraday_middlewares.each { |faraday_middleware| c.use faraday_middleware }
         c.request :multipart
         c.request :url_encoded
         c.response :xml
@@ -80,6 +83,7 @@ module Esa
 
     def simple_connection
       @simple_connection ||= Faraday.new do |c|
+        faraday_middlewares.each { |faraday_middleware| c.use faraday_middleware }
         c.adapter Faraday.default_adapter
       end
     end
