@@ -2,6 +2,9 @@
 
 nothing
 
+## 3.2.0 (2025-07-08)
+- add: [Support `faraday_middlewares` option in Esa::Client](https://github.com/esaio/esa-ruby/pull/71)
+
 ## 3.1.0 (2025-02-21)
 - add: [Add signed_urls method](https://github.com/esaio/esa-ruby/pull/70)
 
