@@ -2,6 +2,9 @@
 
 nothing
 
+## 3.3.0 (2025-07-18)
+- add: [Support revision API](https://github.com/esaio/esa-ruby/pull/72)
+
 ## 3.2.0 (2025-07-08)
 - add: [Support `faraday_middlewares` option in Esa::Client](https://github.com/esaio/esa-ruby/pull/71)
 
