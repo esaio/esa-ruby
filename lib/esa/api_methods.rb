@@ -53,6 +53,18 @@ module Esa
       send_post("/v1/teams/#{current_team!}/posts/#{post_number}/append", wrap(params, :post), headers)
     end
 
+    def revisions(post_number, params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/posts/#{post_number}/revisions", params, headers)
+    end
+
+    def revision(post_number, revision_number, params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/posts/#{post_number}/revisions/#{revision_number}", params, headers)
+    end
+
+    def compare_revisions(post_number, from_revision_number, to_revision_number, params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/posts/#{post_number}/revisions/compare/#{from_revision_number}...#{to_revision_number}", params, headers)
+    end
+
     def delete_post(post_number, params = nil, headers = nil)
       send_delete("/v1/teams/#{current_team!}/posts/#{post_number}", params, headers)
     end
