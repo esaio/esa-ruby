@@ -97,7 +97,7 @@ client.revisions(post_number)
 client.revision(post_number, revision_number)
 #=> GET /v1/teams/foobar/posts/1/revisions
 
-client.compare_revisions(post_number, from...to)
+client.compare_revisions(post_number, from, to)
 #=> GET /v1/teams/foobar/posts/1/revisions/compare/1...2
 
 

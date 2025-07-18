@@ -61,8 +61,8 @@ module Esa
       send_get("/v1/teams/#{current_team!}/posts/#{post_number}/revisions/#{revision_number}", params, headers)
     end
 
-    def compare_revisions(post_number, revision_range, params = nil, headers = nil)
-      send_get("/v1/teams/#{current_team!}/posts/#{post_number}/revisions/compare/#{revision_range}", params, headers)
+    def compare_revisions(post_number, from_revision_number, to_revision_number, params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/posts/#{post_number}/revisions/compare/#{from_revision_number}...#{to_revision_number}", params, headers)
     end
 
     def delete_post(post_number, params = nil, headers = nil)
