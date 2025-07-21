@@ -90,12 +90,12 @@ client.append_post(post_number, content: 'bar')
 client.delete_post(post_number)
 #=> DELETE /v1/teams/foobar/posts/1
 
-
+# (beta)
 client.revisions(post_number)
 #=> GET /v1/teams/foobar/posts/1/revisions
 
 client.revision(post_number, revision_number)
-#=> GET /v1/teams/foobar/posts/1/revisions
+#=> GET /v1/teams/foobar/posts/1/revisions/123
 
 client.compare_revisions(post_number, from, to)
 #=> GET /v1/teams/foobar/posts/1/revisions/compare/1...2
