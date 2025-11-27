@@ -2,24 +2,32 @@
 
 nothing
 
+## 3.4.0 (2025-11-27)
+
+- [Add ruby 3.5 and drop 3.1 from CI/required_ruby_version](https://github.com/esaio/esa-ruby/pull/77)
+  - **changed**: Drop support for Ruby 3.1
+
 ## 3.3.0 (2025-07-18)
+
 - add: [Support revision API](https://github.com/esaio/esa-ruby/pull/72)
 
 ## 3.2.0 (2025-07-08)
+
 - add: [Support `faraday_middlewares` option in Esa::Client](https://github.com/esaio/esa-ruby/pull/71)
 
 ## 3.1.0 (2025-02-21)
+
 - add: [Add signed_urls method](https://github.com/esaio/esa-ruby/pull/70)
 
 ## 3.0.0 (2025-02-20)
+
 - :warning: breaking: [Drop Support for Ruby < 3.1](https://github.com/esaio/esa-ruby/pull/67)
 - ci: [Tweak CI ruby versions](https://github.com/esaio/esa-ruby/pull/65)
 
-
 ## 2.2.0 (2024-05-30)
+
 - fix: [Request to add base64 gem dependency to esa gem](https://github.com/esaio/esa-ruby/pull/64)
 - ci: [Tweak CI ruby versions](https://github.com/esaio/esa-ruby/pull/65)
-
 
 ## 2.1.0 (2023-10-03)
 

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    esa (3.3.0)
+    esa (3.4.0)
       base64 (>= 0.2)
       faraday (>= 2.0.1, < 3.0)
       faraday-multipart
