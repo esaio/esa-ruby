@@ -13,11 +13,11 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/esaio/esa-ruby/'
   spec.license       = 'MIT'
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match?(%r{^(spec/|\.)}) }
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match?(%r{^(spec/|\.|Gemfile|Rakefile)}) }
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = ">= 3.1.0"
+  spec.required_ruby_version = ">= 3.2.0"
 
   spec.add_runtime_dependency 'base64', '>= 0.2'
   spec.add_runtime_dependency 'faraday', '>= 2.0.1', '< 3.0'
