@@ -2,6 +2,11 @@
 
 nothing
 
+## 3.5.0 (2026-02-18)
+
+- [Tweak CI matrix](https://github.com/esaio/esa-ruby/pull/83)
+  - **changed**: Add support for Ruby 4.0 (formerly Ruby 3.5)
+
 ## 3.4.0 (2025-11-27)
 
 - [Add ruby 3.5 and drop 3.1 from CI/required_ruby_version](https://github.com/esaio/esa-ruby/pull/77)
