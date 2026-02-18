@@ -77,7 +77,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 2.0)
   esa!
   pry (~> 0.12)
   rake (~> 13.0)
@@ -85,4 +84,4 @@ DEPENDENCIES
   webmock (~> 3.26.1)
 
 BUNDLED WITH
-   2.7.2
+  4.0.6
