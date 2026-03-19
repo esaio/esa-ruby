@@ -33,7 +33,7 @@ GEM
       faraday (>= 1.10, < 3)
     hashdiff (1.2.1)
     io-console (0.8.2)
-    json (2.18.1)
+    json (2.19.2)
     logger (1.7.0)
     method_source (1.1.0)
     mime-types (3.7.0)
