@@ -50,7 +50,7 @@ GEM
       method_source (~> 1.0)
       reline (>= 0.6.0)
     public_suffix (7.0.5)
-    rake (13.3.1)
+    rake (13.4.1)
     reline (0.6.3)
       io-console (~> 0.5)
     rexml (3.4.4)
