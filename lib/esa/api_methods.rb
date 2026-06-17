@@ -53,6 +53,10 @@ module Esa
       send_post("/v1/teams/#{current_team!}/posts/#{post_number}/append", wrap(params, :post), headers)
     end
 
+    def prepend_post(post_number, params = nil, headers = nil)
+      send_post("/v1/teams/#{current_team!}/posts/#{post_number}/prepend", wrap(params, :post), headers)
+    end
+
     def revisions(post_number, params = nil, headers = nil)
       send_get("/v1/teams/#{current_team!}/posts/#{post_number}/revisions", params, headers)
     end
