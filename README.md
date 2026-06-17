@@ -87,6 +87,10 @@ client.update_post(post_number, name: 'bar')
 client.append_post(post_number, content: 'bar')
 #=> POST /v1/teams/foobar/posts/1/append
 
+# (beta)
+client.prepend_post(post_number, content: 'bar')
+#=> POST /v1/teams/foobar/posts/1/prepend
+
 client.delete_post(post_number)
 #=> DELETE /v1/teams/foobar/posts/1
 
