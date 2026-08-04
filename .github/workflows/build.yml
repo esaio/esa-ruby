@@ -24,6 +24,9 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
+          # ruby-head: Gemfile.lock の BUNDLED WITH と head 同梱の dev 版 Bundler の
+          # 不一致で Bundler::CorruptBundlerInstallError になるため latest を使う
+          bundler: ${{ matrix.ruby == 'head' && 'latest' || 'default' }}
           bundler-cache: true
       - name: Install dependencies
         run: bundle install --jobs 4 --retry 3
