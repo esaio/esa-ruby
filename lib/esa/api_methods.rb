@@ -196,8 +196,23 @@ module Esa
       end
     end
 
-    # beta
+    def create_attachment(path_or_file_or_url, params = {}, headers = nil)
+      file = file_from(path_or_file_or_url)
+      content_type = params.delete(:content_type) || content_type_from_file(file) || 'application/octet-stream'
+
+      form_data = { file: Faraday::FilePart.new(file, content_type) }
+      form_data[:name] = params[:name] if params[:name]
+
+      send_multipart_post("/v1/teams/#{current_team!}/attachments", form_data, headers)
+    end
+
+    # deprecated: Use #create_attachment instead
     def upload_attachment(path_or_file_or_url, params = {}, headers = nil)
+      unless @upload_attachment_deprecation_warned
+        warn '[DEPRECATION] `upload_attachment` is deprecated. Use `create_attachment` instead.'
+        @upload_attachment_deprecation_warned = true
+      end
+
       file = file_from(path_or_file_or_url)
       setup_params_for_upload(params, file)
 

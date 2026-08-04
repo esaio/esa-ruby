@@ -102,6 +102,55 @@ RSpec.describe Esa::Client do
     end
   end
 
+  describe '#create_attachment' do
+    let(:current_team) { 'test-team' }
+    let(:file) { File.open('spec/fixtures/files/egg.png') }
+
+    before do
+      stub_request(:post, "https://api.esa.io/v1/teams/test-team/attachments")
+        .to_return(
+          status: 201,
+          body: {
+            attachment: {
+              url: 'https://img.esa.io/uploads/test.png',
+              name: 'egg.png',
+              size: 49816,
+              content_type: 'image/png'
+            }
+          }.to_json,
+          headers: {
+            'Content-Type' => 'application/json; charset=utf-8'
+          }
+        )
+    end
+
+    it 'uploads file as multipart/form-data and returns attachment' do
+      response = client.create_attachment(file)
+
+      expect(response.status).to eq(201)
+      expect(response.body['attachment']['url']).to eq('https://img.esa.io/uploads/test.png')
+      expect(
+        a_request(:post, "https://api.esa.io/v1/teams/test-team/attachments").with do |req|
+          req.headers['Content-Type'].start_with?('multipart/form-data') &&
+            req.body.include?('name="file"; filename="egg.png"') &&
+            req.body.include?('Content-Type: image/png')
+        end
+      ).to have_been_made
+    end
+
+    context 'with name param' do
+      it 'sends name as a form field' do
+        client.create_attachment(file, name: 'renamed.png')
+
+        expect(
+          a_request(:post, "https://api.esa.io/v1/teams/test-team/attachments").with do |req|
+            req.body.include?('name="name"') && req.body.include?('renamed.png')
+          end
+        ).to have_been_made
+      end
+    end
+  end
+
   describe '#upload_attachment' do
     let(:current_team) { 'test-team' }
     let(:file) { File.open('spec/fixtures/files/egg.png') }
@@ -139,6 +188,11 @@ RSpec.describe Esa::Client do
     it 'return URL for uploaded attachment'do
       response = client.upload_attachment(file)
       expect(response.body['attachment']['url']).to eq('https://example.com/test.png')
+    end
+
+    it 'warns deprecation once' do
+      expect { client.upload_attachment(file) }.to output(/deprecated/).to_stderr
+      expect { client.upload_attachment(File.open('spec/fixtures/files/egg.png')) }.not_to output.to_stderr
     end
   end
 end
