@@ -202,7 +202,17 @@ client.create_emoji(code: 'alias_code', origin_code: 'team_emoji')
 client.delete_emoji('team_emoji')
 #=> DELETE /v1/teams/foobar/emojis/team_emoji
 
-# Upload Attachment(beta)
+# Upload Attachment
+client.create_attachment('/Users/foo/Desktop/foo.png')                 # Path
+client.create_attachment(File.open('/Users/foo/Desktop/foo.png'))      # File
+client.create_attachment('http://example.com/foo.png')                 # Remote URL
+client.create_attachment(['http://example.com/foo.png', cookie_str])   # Remote URL + Cookie
+client.create_attachment(['http://example.com/foo.png', headers_hash]) # Remote URL + Headers
+client.create_attachment('/Users/foo/Desktop/foo.png', name: 'bar.png') # Path + Name
+#=> POST /v1/teams/foobar/attachments
+#=> { "attachment" => { "url" => "https://img.esa.io/uploads/...", "name" => "foo.png", "size" => 12345, "content_type" => "image/png" } }
+
+# Upload Attachment(beta): deprecated, use create_attachment instead
 client.upload_attachment('/Users/foo/Desktop/foo.png')                 # Path
 client.upload_attachment(File.open('/Users/foo/Desktop/foo.png'))      # File
 client.upload_attachment('http://example.com/foo.png')                 # Remote URL

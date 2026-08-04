@@ -43,8 +43,12 @@ module Esa
       send_request(:delete, path, params, headers)
     end
 
-    def send_request(method, path, params = nil, headers = nil)
-      response = esa_connection.send(method, path, params, headers)
+    def send_multipart_post(path, params = nil, headers = nil)
+      send_request(:post, path, params, headers, connection: multipart_connection)
+    end
+
+    def send_request(method, path, params = nil, headers = nil, connection: esa_connection)
+      response = connection.send(method, path, params, headers)
       raise TooManyRequestError if retry_on_rate_limit_exceeded && response.status == 429 # too_many_requests
       Esa::Response.new(response)
     rescue TooManyRequestError
@@ -66,6 +70,16 @@ module Esa
       @esa_connection ||= Faraday.new(faraday_options) do |c|
         faraday_middlewares.each { |faraday_middleware| c.use faraday_middleware }
         c.request :json
+        c.response :json
+        c.adapter Faraday.default_adapter
+      end
+    end
+
+    def multipart_connection
+      @multipart_connection ||= Faraday.new(faraday_options) do |c|
+        faraday_middlewares.each { |faraday_middleware| c.use faraday_middleware }
+        c.request :multipart
+        c.request :url_encoded
         c.response :json
         c.adapter Faraday.default_adapter
       end
