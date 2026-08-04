@@ -1,6 +1,12 @@
 ## Unreleased
 
-nothing
+Nothing
+
+## 3.7.0 (2026-08-04)
+
+- add: [Add create_attachment instead of upload_attachment](https://github.com/esaio/esa-ruby/pull/102)
+  - **deprecated**: `#upload_attachment` has been deprecated. Use `#create_attachment` instead. 
+- ci: [CI: Use latest bundler for ruby-head](https://github.com/esaio/esa-ruby/pull/103)
 
 ## 3.6.0 (2026-06-17)
 
