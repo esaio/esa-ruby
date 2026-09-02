@@ -65,6 +65,25 @@ delete_by_email_address = 'alice@example.com'
 client.delete_member(delete_by_email_address)
 #=> DELETE /v1/teams/bar/members/alice@example.com
 
+# Child Team API (requires owner permission on the parent team)
+client.child_teams
+#=> GET /v1/teams/bar/child_teams
+
+# requires v2 token read:child_team_member
+client.child_team_members('sub')
+#=> GET /v1/teams/bar/child_teams/sub/members
+
+# requires v2 token read:child_team_member
+client.child_team_member('sub', 'alice')
+#=> GET /v1/teams/bar/child_teams/sub/members/alice
+
+client.child_team_member('sub', 'alice@example.com')
+#=> GET /v1/teams/bar/child_teams/sub/members/alice@example.com
+
+# requires v2 token delete:child_team_member
+client.delete_child_team_member('sub', 'alice')
+#=> DELETE /v1/teams/bar/child_teams/sub/members/alice
+
 # Post API
 client.posts
 #=> GET /v1/teams/foo/posts
