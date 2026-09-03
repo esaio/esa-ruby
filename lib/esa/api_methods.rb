@@ -33,6 +33,22 @@ module Esa
       send_delete("/v1/teams/#{current_team!}/members/#{screen_name}", params, headers)
     end
 
+    def child_teams(params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/child_teams", params, headers)
+    end
+
+    def child_team_members(child_team_name, params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/child_teams/#{child_team_name}/members", params, headers)
+    end
+
+    def child_team_member(child_team_name, identifier, params = nil, headers = nil)
+      send_get("/v1/teams/#{current_team!}/child_teams/#{child_team_name}/members/#{identifier}", params, headers)
+    end
+
+    def delete_child_team_member(child_team_name, screen_name, params = nil, headers = nil)
+      send_delete("/v1/teams/#{current_team!}/child_teams/#{child_team_name}/members/#{screen_name}", params, headers)
+    end
+
     def posts(params = nil, headers = nil)
       send_get("/v1/teams/#{current_team!}/posts", params, headers)
     end
